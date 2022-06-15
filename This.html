@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //console.log(this)
+        
+        function Usuario(){
+            this.nome = 'Joao'
+            this.idade = '17'
+            this.soma = (a, b) => {
+                return a + b
+            }
+        }
+    
+        let usuario = new Usuario()
+        console.log(usuario)
+        console.log(usuario.nome)
+        console.log(usuario.idade)
+        console.log(usuario.soma(2,7))
+
+        //-----------Método de invocação call----------------
+
+        /*O PRIMEIRO PARÂMETRO DOS MÉTODOS CALL, APPLY E BIND
+          DEVERÁ SER O OBJETO COM O "THIS"*/
+        /*
+            function Personagem(a, b, c) {
+                console.log(a, b, c)
+                console.log(this)
+            }
+
+            var dadosPessoais = {
+                nome: 'Douglas',
+                idade: 29
+            }
+
+            Personagem.call(dadosPessoais,'param1', 123, [5])
+        */ 
+        //---------Método de invocação Apply----------------
+        /*
+            function Personagem(a, b, c) {
+                    console.log(a, b, c)
+                    console.log(this)
+                }
+
+                var dadosPessoais = {
+                    nome: 'Douglas',
+                    idade: 29
+                }
+                                        //Os parâmetros devem ser passados
+                                        //dentro de um Array
+            Personagem.apply(dadosPessoais,['param2', 123,[4]])
+        */
+
+        //--------Método de invocação bind-----------------
+
+        /* ESSE MÉTODO INVOCA A FUNCTION RETORNANDO OUTRA FUNCTION
+        QUE PODERÁ SER INVOCADA
+
+            function Personagem(a, b, c) {
+                        console.log(a, b, c)
+                        console.log(this)
+                    }
+
+                    var dadosPessoais = {
+                        nome: 'Douglas',
+                        idade: 29
+                    }
+            var fPersonagem = Personagem.bind(dadosPessoais,'Olá','Mundo!')
+            fPersonagem('!!!')
+        */
+       //------------------ARROW FUNCTIONS-------------------
+       /*
+        var soma = (a, b) => {
+                return a + b
+            }
+       */ 
+       /* SE A FUNÇÃO RETORNA UMA OPERAÇÃO COM OS PARÂMETROS SEM
+       NENHUMA LÓGICA ANTES DE REALIZAR ESSA OPERAÇÃO PODEMOS 
+       ESCREVER DESSE JEITO:*/
+       /* 
+        var soma = (a, b) => a + b
+
+            console.log(soma(10,11))
+       */
+      /*
+        var retornaUsuario = cidade => (
+            {
+                nome: 'Joao',
+                idade: 17,
+                cidade
+            }
+        )
+        
+        console.log(retornaUsuario('Rio de Janeiro 232'))
+      */
+      var imprimiThis = () => {
+        console.log(this)
+      } 
+
+      
+      imprimiThis()
+
+      imprimiThis.call({nome: 'Carlos'})
+    </script>
+</body>
+</html>
